@@ -880,6 +880,103 @@ html.hassel body{padding-bottom:var(--selh,0px)}
   .selact .addbtn{flex:1 1 auto;justify-content:center}
   .fcount + .fsa{margin-left:0}
 }
+/* show as: List or Month, at the top of the Calendar view */
+.calbar{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap;margin:28px 0 0}
+.calbar .lab{margin:0;padding:0}
+.calmode{display:inline-flex;border:1px solid var(--ink);border-radius:var(--radius);overflow:hidden}
+.calmode button{display:inline-flex;align-items:center;gap:9px;font:600 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:12px 18px;min-height:44px;color:var(--ink2);background:var(--paper);border:0;cursor:pointer}
+.calmode button + button{border-left:1px solid var(--ink)}
+.calmode button svg{width:16px;height:16px;flex:none}
+.calmode button:hover{color:var(--ink)}
+.calmode button[aria-pressed="true"]{background:var(--ink);color:var(--on-ink)}
+.calmode button:focus-visible{outline:2px solid var(--ink);outline-offset:-4px}
+.calmode button[aria-pressed="true"]:focus-visible{outline-color:var(--on-ink)}
+.calmode button:active{transform:translateY(1px)}
+/* the month grid */
+.msec .sech{flex-wrap:wrap}
+.mcount{font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+.mhead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin:16px 0 12px}
+.mnav{display:flex;gap:6px}
+.mbtn{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:40px;padding:0 12px;border:1px solid var(--rule2);border-radius:2px;background:var(--paper);color:var(--ink);font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.mbtn:hover:not(:disabled){border-color:var(--ink)}
+.mbtn:disabled{color:var(--ink4);border-color:var(--rule);cursor:default}
+.mbtn .arrow{border:0;width:14px;height:14px}
+.mbtn .arrow svg{width:11px;height:11px}
+.mbtn.nxt .arrow{transform:scaleX(-1)}
+.mbtn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.mbtn:active:not(:disabled){transform:translateY(1px)}
+.mstrip{display:flex;align-items:stretch;gap:4px;overflow-x:auto;padding:2px 0 8px;margin-bottom:14px}
+.mstrip .myr{align-self:center;font:700 11px/1 var(--mono);letter-spacing:.06em;color:var(--ink);padding:0 4px 0 10px}
+.mstrip .myr:first-child{padding-left:0}
+.mstrip button{flex:none;display:flex;flex-direction:column;align-items:center;gap:5px;min-width:48px;padding:8px 6px;border:1px solid var(--rule);border-radius:2px;background:var(--paper);font:600 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);cursor:pointer}
+.mstrip button s{text-decoration:none;font:700 14px/1 var(--sans);letter-spacing:-.01em;color:var(--ink)}
+.mstrip button.now{border-color:var(--ink3)}
+.mstrip button:hover{border-color:var(--ink)}
+.mstrip button[aria-pressed="true"]{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.mstrip button[aria-pressed="true"] s{color:var(--on-ink)}
+.mstrip button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.monly{margin:0 0 12px;font:400 14px/1.5 var(--sans);color:var(--ink2)}
+.monly a{border-bottom:1px solid var(--rule2);color:var(--ink)}
+.mwrap{border-top:1px solid var(--ink)}
+.mcal{width:100%;border-collapse:collapse;table-layout:fixed}
+.mcal th{font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);text-align:left;padding:10px 8px;border-bottom:1px solid var(--rule)}
+.mcal .w1{display:none}
+.mcal td{vertical-align:top;height:120px;padding:6px 6px 8px;border:1px solid var(--rule);border-top:0}
+.mcal tr td:first-child{border-left:0}
+.mcal tr td:last-child{border-right:0}
+.mcal td.out{background:color-mix(in srgb,var(--paper3) 55%,transparent)}
+.mcal td.gone{background:color-mix(in srgb,var(--paper3) 35%,transparent)}
+.mcal .dn{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.mcal .dn span{font:600 12px/1 var(--mono);color:var(--ink2);min-width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;border-radius:2px}
+.mcal td.gone .dn span{color:var(--ink3)}
+.mcal td.today{box-shadow:inset 0 0 0 2px var(--ink)}
+.mcal td.today .dn span{background:var(--ink);color:var(--on-ink)}
+.mcal .dn em{font:700 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;font-style:normal;color:var(--ink)}
+.mcal .chs{display:flex;flex-direction:column;gap:3px}
+.mcal .ch{display:block;font:600 12px/1.25 var(--sans);letter-spacing:-.005em;color:var(--ink);background:color-mix(in srgb,var(--ink) 7%,var(--paper));border-left:3px solid var(--ink);padding:4px 6px;border-radius:0 2px 2px 0}
+.mcal .ch .t{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mcal .ch.runs{margin-right:-7px;border-radius:0}
+.mcal .ch.cont{margin-left:-7px;border-left:0;padding-left:9px}
+.mcal .ch.cont[aria-hidden="true"] .t{visibility:hidden;-webkit-line-clamp:1}
+.mcal .ch.nx{border-left-color:var(--accent);background:color-mix(in srgb,var(--accent) 16%,var(--paper))}
+.mcal .ch.gone{color:var(--ink3);border-left-color:var(--rule2);background:color-mix(in srgb,var(--paper3) 80%,transparent)}
+@media(hover:hover){.mcal .ch:hover .t{text-decoration:underline;text-underline-offset:2px}}
+.mcal .ch:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.legend .sw.t{background:var(--paper);border:2px solid var(--ink)}
+.mleg{margin-top:14px}
+.mleg i.rule a{border-bottom:1px solid var(--rule2);color:var(--ink)}
+.magenda{display:none;list-style:none;margin:18px 0 0;padding:0;border-top:1px solid var(--ink)}
+.magenda li{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:4px 12px;align-items:start;padding:12px 0;border-bottom:1px solid var(--rule)}
+.magenda .dd{font:600 12px/1.35 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.magenda a{font:600 15.5px/1.3 var(--sans);color:var(--ink)}
+.magenda .sb{margin-top:3px;font:400 13px/1.45 var(--sans);color:var(--ink2)}
+.magenda li.nx{box-shadow:inset 3px 0 0 var(--accent);padding-left:10px}
+.magenda li.gone a,.magenda li.gone .dd{color:var(--ink3)}
+.magenda .selb{width:40px;height:40px}
+.magenda .selb svg{width:18px;height:18px}
+@media(max-width:700px){
+  .calbar{margin:22px 0 0}
+  .calmode{flex:1 1 auto}
+  .calmode button{flex:1;justify-content:center;padding:12px 10px}
+  .mhead .msel{width:100%;text-align:center;padding:12px 10px}
+  .mcal th{padding:8px 2px;text-align:center}
+  .mcal .w3{display:none}
+  .mcal .w1{display:inline}
+  .mcal td{height:62px;padding:4px 3px}
+  .mcal .dn{justify-content:center;margin-bottom:4px}
+  .mcal .dn em{display:none}
+  .mcal .chs{gap:2px}
+  .mcal .ch{height:5px;padding:0;border-left:0;border-radius:2px;background:var(--ink)}
+  .mcal .ch .t{display:none}
+  .mcal .ch.nx{background:var(--accent)}
+  .mcal .ch.gone{background:var(--rule2)}
+  .mcal .ch.runs{margin-right:-4px;border-radius:2px 0 0 2px}
+  .mcal .ch.cont{margin-left:-4px;padding:0;border-radius:0 2px 2px 0}
+  .mcal .ch.runs.cont{border-radius:0}
+  .mcal td.has{cursor:pointer}
+  .magenda{display:block}
+}
+@media print{.calbar,.mstrip,.mnav,.msel{display:none!important}.mcal td{height:auto;min-height:80px}}
 @media print{.selbar,.selb,.grpsel,.selt{display:none!important}}
 @media print{nav.top,.sline,#atmos,.bg,.filters,.firmbar,.tl{display:none!important}}
 </style>
@@ -1823,7 +1920,98 @@ DS.atmosphere = function initAtmosphere() {
     return `<div class="scroll stackwrap"><table class="tbl rows stack"><thead><tr><th>Date</th><th>Event</th><th>Market</th><th>Kind</th><th class="n">Rolodex firms named</th><th class="ac"><span class="vh">Select</span></th></tr></thead><tbody>${grouped ? grouped(rows) : rows.join('')}</tbody></table></div>`;
   }
   const grp = (title, n, note, act) => `<tr class="grp"><td colspan="6"><span class="gl">${esc(title)}</span><span class="gn">${n}</span>${note ? `<em>${esc(note)}</em>` : ''}${act || ''}</td></tr>`;
+  /* ------------------------------------------------------------------ show as: List or Month
+     A toggle at the top of the Calendar view. List is the next 30 days, the timeline and events by month. Month is a
+     calendar grid, one month at a time, Sunday first. The choice is kept (events-calmode, wrapped: the page works when
+     storage throws) and the address carries it: #list, #month, #month-2026-11. #calendar opens the kept choice. */
+  const MKEY = 'events-calmode';
+  let MODE = 'list';
+  try { if (localStorage.getItem(MKEY) === 'month') MODE = 'month'; } catch (e) { /* storage blocked */ }
+  const saveMode = () => { try { localStorage.setItem(MKEY, MODE); } catch (e) { /* the page works without storage */ } };
+  const WIN = [];   // the months of the window, "2026-10" to "2027-12"
+  { let [y, m] = parts(D.window[0]); const [y1, m1] = parts(D.window[1]); while (y < y1 || (y === y1 && m <= m1)) { WIN.push(`${y}-${pad(m)}`); m++; if (m > 12) { m = 1; y++; } } }
+  const clampYM = (ym) => (ym < WIN[0] ? WIN[0] : ym > WIN[WIN.length - 1] ? WIN[WIN.length - 1] : ym);
+  let CUR = clampYM(TODAY.slice(0, 7));
+  const ymStep = (ym, n) => { let [y, m] = ym.split('-').map(Number); m += n; while (m > 12) { m -= 12; y++; } while (m < 1) { m += 12; y--; } return `${y}-${pad(m)}`; };
+  const ymDays = (ym) => { const [y, m] = ym.split('-').map(Number); const a = day(`${ym}-01`), b = day(`${ymStep(ym, 1)}-01`) - 1; return [a, b, y, m]; };
+  function monthEvents(ym, list) {   // published events on any day of the month, then the month's events with no day yet
+    const [a, b] = ymDays(ym);
+    const dated = list.filter((e) => e.date_status === 'published' && e.s <= b && e.e >= a).sort((x, y) => x.s - y.s || (y.e - y.s) - (x.e - x.s) || x.name.localeCompare(y.name));
+    const monthOnly = list.filter((e) => e.date_status === 'month' && e.month === ym).sort((x, y) => x.name.localeCompare(y.name));
+    return { dated, monthOnly, all: dated.concat(monthOnly) };
+  }
+  const ICO_LIST = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5.5 3.5h9M5.5 8h9M5.5 12.5h9M1.5 3.5h1.5M1.5 8h1.5M1.5 12.5h1.5"/></svg>';
+  const ICO_GRID = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="1.5" y="2.5" width="13" height="12" rx="1"/><path d="M1.5 6.5h13M1.5 10.5h13M5.8 6.5v8M10.2 6.5v8M5 1v3M11 1v3"/></svg>';
+  const calBar = () => `<div class="calbar" id="calbar"><span class="lab" id="calbl">Show as</span><div class="calmode" role="group" aria-labelledby="calbl">` +
+    `<button type="button" data-mode="list" aria-pressed="${MODE === 'list'}">${ICO_LIST}List</button><button type="button" data-mode="month" aria-pressed="${MODE === 'month'}">${ICO_GRID}Month</button></div></div>`;
+  function renderMonth() {
+    const list = D.events.filter(evOk);
+    const { dated, monthOnly, all } = monthEvents(CUR, list);
+    const [a, b, y, m] = ymDays(CUR);
+    const lead = new Date(a * 864e5).getUTCDay();
+    const i0 = WIN.indexOf(CUR), prev = i0 > 0 ? WIN[i0 - 1] : null, next = i0 < WIN.length - 1 ? WIN[i0 + 1] : null;
+    const tYM = clampYM(TODAY.slice(0, 7));
+    const strip = WIN.map((ym, i) => {
+      const [yy, mm] = ym.split('-').map(Number), n = monthEvents(ym, list).all.length;
+      return `${i === 0 || mm === 1 ? `<span class="myr">${yy}</span>` : ''}<button type="button" data-ym="${ym}" aria-pressed="${ym === CUR}" aria-label="${MON[mm - 1]} ${yy}, ${n} ${n === 1 ? 'event' : 'events'}"${ym === tYM ? ' class="now"' : ''}>${monShort(mm)}<s>${n}</s></button>`;
+    }).join('');
+    // the grid: whole weeks, Sunday first; each day lists the events on it. A multi-day event runs across its days:
+    // its name on its first day and at the start of each week, a bar on the other days.
+    const cells = [];
+    for (let i = 0; i < lead; i++) cells.push('<td class="out" aria-hidden="true"></td>');
+    for (let d = a; d <= b; d++) {
+      const dn = d - a + 1, iso = `${CUR}-${pad(dn)}`, wdi = new Date(d * 864e5).getUTCDay();
+      const evs = dated.filter((e) => e.s <= d && e.e >= d);
+      const chips = evs.map((e) => {
+        const first = e.s === d, named = first || wdi === 0 || d === a;
+        const cls = `ch${e.nx ? ' nx' : ''}${e.e < T ? ' gone' : ''}${e.e > e.s ? ' multi' : ''}${first ? '' : ' cont'}${e.e > d && wdi !== 6 && d !== b ? ' runs' : ''}`;
+        return named ? `<a class="${cls}" href="#${e.id}" data-id="${e.id}"><span class="t">${esc(e.name)}</span></a>`
+          : `<a class="${cls}" href="#${e.id}" data-id="${e.id}" tabindex="-1" aria-hidden="true"><span class="t">${esc(e.name)}</span></a>`;
+      }).join('');
+      const cls = `d${d < T ? ' gone' : ''}${d === T ? ' today' : ''}${evs.length ? ' has' : ''}${wdi === 0 || wdi === 6 ? ' we' : ''}`;
+      cells.push(`<td class="${cls}" data-day="${iso}"><div class="dn"><span>${dn}</span>${d === T ? '<em>Today</em>' : ''}</div>${evs.length ? `<div class="chs">${chips}</div>` : ''}</td>`);
+    }
+    while (cells.length % 7) cells.push('<td class="out" aria-hidden="true"></td>');
+    let rows = '';
+    for (let i = 0; i < cells.length; i += 7) rows += `<tr>${cells.slice(i, i + 7).join('')}</tr>`;
+    const wk = WD.map((w) => `<th scope="col" abbr="${w}"><span class="w3">${w.slice(0, 3)}</span><span class="w1" aria-hidden="true">${w.charAt(0)}</span></th>`).join('');
+    // on a phone the grid shows a bar per event; the month's events are listed under it, by day
+    const byDay = {};
+    dated.forEach((e) => { const k = e.s < a ? a : e.s; (byDay[k] = byDay[k] || []).push(e); });
+    const agenda = Object.keys(byDay).map(Number).sort((p, q) => p - q).map((k) => byDay[k].map((e) => {
+      const o = ORGS[e.org_id], r = rel(e);
+      return `<li class="${e.nx ? 'nx' : ''}${e.st === 'past' ? ' gone' : ''}" data-day="${CUR}-${pad(k - a + 1)}"><div class="dd">${esc(wday(e.start).slice(0, 3))} ${esc(shortSpan(e))}</div><div><a href="#${e.id}">${esc(e.name)}</a><div class="sb">${esc(o.short || o.name)} · ${esc(e.city || '')}${r ? ` · ${esc(e.nx ? 'coming next, ' + r : r)}` : ''}</div></div>${selBtn(e)}</li>`;
+    }).join('')).join('');
+    const mo = monthOnly.length ? `<p class="monly">Also in ${esc(MON[m - 1])} ${y}, day not yet published: ${monthOnly.map((e) => `<a href="#${e.id}">${esc(e.name)}</a>`).join(', ')}.</p>` : '';
+    const nUnd = list.filter((e) => e.st === 'undated' && e.date_status !== 'month').length;
+    const n = all.length;
+    $('v-calendar').innerHTML = calBar() +
+      `<section class="sec msec" data-sec id="month"><div class="sech"><h2 id="mtitle">${esc(MON[m - 1])} ${y}</h2><span class="mcount">${n} ${n === 1 ? 'event' : 'events'}</span></div>
+<div class="mhead"><div class="mnav"><button class="mbtn" type="button" data-ym="${prev || ''}"${prev ? '' : ' disabled'} aria-label="${prev ? 'Previous month, ' + monthName(prev) : 'No earlier month in the calendar'}">${ARROW}</button><button class="mbtn nxt" type="button" data-ym="${next || ''}"${next ? '' : ' disabled'} aria-label="${next ? 'Next month, ' + monthName(next) : 'No later month in the calendar'}">${ARROW}</button><button class="mbtn tm" type="button" data-ym="${tYM}"${CUR === tYM ? ' disabled' : ''}>This month</button></div>
+${all.length ? selMany(all.map((e) => e.id), 'Select this month’s events', 'Unselect this month’s events', 'msel') : ''}</div>
+<div class="mstrip" role="group" aria-label="Months">${strip}</div>
+${mo}
+<div class="mwrap"><table class="mcal"><caption class="vh">${esc(MON[m - 1])} ${y}</caption><thead><tr>${wk}</tr></thead><tbody>${rows}</tbody></table></div>
+<div class="legend mleg"><i><span class="sw o"></span>coming next</i><i><span class="sw k"></span>ahead</i><i><span class="sw" style="background:var(--rule2)"></span>past</i><i><span class="sw t"></span>today</i><i class="rule">${nUnd ? `<b>${nUnd}</b> ${nUnd === 1 ? 'event has' : 'events have'} no published date and ${nUnd === 1 ? 'is' : 'are'} not on the grid. <a href="#bymonth">See them in the list</a>.` : ''}</i></div>
+${agenda ? `<ol class="magenda" aria-label="Events in ${esc(MON[m - 1])} ${y}">${agenda}</ol>` : `<p class="none">No event with a published date in ${esc(MON[m - 1])} ${y}${F.mkt.size || F.kind.size || F.tied || F.q ? ' under these filters' : ''}.</p>`}</section>`;
+    $('v-calendar').querySelectorAll('.mcal .ch').forEach((c) => {
+      const e = EVS[c.dataset.id];
+      DS.tip.bind(c, () => `<b>${esc(e.name)}</b><br>${esc(span(e))} · ${esc(e.city || '')}<br><span class="m">${esc(e.nx ? 'Coming next · ' + rel(e) : rel(e) || '')}</span>`);
+    });
+  }
+  $('v-calendar').addEventListener('click', (ev) => {
+    const mb = ev.target.closest('[data-mode]');
+    if (mb) { if (mb.dataset.mode !== MODE) go(mb.dataset.mode === 'month' ? '#month-' + CUR : '#list'); return; }
+    const yb = ev.target.closest('button[data-ym]');
+    if (yb) { if (!yb.dataset.ym || yb.dataset.ym === CUR) return; history.replaceState(null, '', '#month-' + yb.dataset.ym); route(false); const s = $('v-calendar').querySelector(`.mstrip [data-ym="${CUR}"]`); if (s) s.scrollIntoView({ block: 'nearest', inline: 'nearest' }); return; }
+    const td = ev.target.closest('.mcal td.has');
+    if (td && !ev.target.closest('a')) {   // on a phone the day's events are listed under the grid
+      const li = $('v-calendar').querySelectorAll(`.magenda li[data-day="${td.dataset.day}"]`);
+      if (li.length && li[0].offsetParent) { li[0].scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); li.forEach((x) => DS.landed(x)); }
+    }
+  });
   function renderCalendar() {
+    if (MODE === 'month') { renderMonth(); return; }
     const list = D.events.filter(evOk);
     const soon = list.filter((e) => e.date_status === 'published' && ((e.st === 'up' && e.dd <= 30) || e.st === 'now')).sort((a, b) => a.s - b.s || a.name.localeCompare(b.name));
     const dated = list.filter((e) => e.date_status === 'published' && e.st !== 'past').sort((a, b) => a.s - b.s || a.name.localeCompare(b.name));
@@ -1840,7 +2028,7 @@ DS.atmosphere = function initAtmosphere() {
       return out;
     };
     const nUnd = D.events.filter((e) => e.st === 'undated' && evOk(e)).length;
-    $('v-calendar').innerHTML =
+    $('v-calendar').innerHTML = calBar() +
       sec('Next 30 days', `<p class="cap">From ${esc(longDate(TODAY))}, every event with a published date that starts in the next 30 days or is on now.</p>${soonList(soon)}`, 'soon') +
       sec('October 2026 to December 2027', `<p class="cap">Each mark is one event with a published date, on the day it is held. The orange mark is the next event. Grey marks have passed.</p>${timeline(list)}
 <div class="legend" style="margin-top:14px"><i><span class="sw o"></span>coming next</i><i><span class="sw k"></span>ahead</i><i><span class="sw" style="background:var(--rule2)"></span>past</i><i class="rule">${nUnd ? `<b>${nUnd}</b> ${nUnd === 1 ? 'event has' : 'events have'} no published day yet and ${nUnd === 1 ? 'is' : 'are'} listed below, not drawn.` : ''}</i></div>`, 'timeline') +
@@ -2071,7 +2259,7 @@ ${row('Sources', `<ul class="mini srcl">${uniq.map((s) => srcLink(s[0], s[1])).j
     return `<button class="grpsel${cls ? ' ' + cls : ''}" type="button" data-selmany="${ids.join(',')}" data-l1="${esc(label)}" data-l0="${esc(offLabel)}" aria-pressed="${!!all}">${esc(all ? offLabel : label)}</button>`;
   }
   function shownEvents() {   // what "Select all shown" takes: the events the current view lists under the filters
-    if (VIEW === 'calendar') return D.events.filter(evOk);
+    if (VIEW === 'calendar') return MODE === 'month' ? monthEvents(CUR, D.events.filter(evOk)).all : D.events.filter(evOk);
     if (VIEW === 'organizations') return D.organizations.filter(orgOk).flatMap((o) => o.events);
     if (VIEW === 'firms') return [...new Set(FIRM_IDS.filter(firmOk).flatMap((id) => FIRM_TIES[id].filter((r) => r.k === 'ev').map((r) => r.x)))];
     return [];
@@ -2129,7 +2317,7 @@ ${row('Sources', `<ul class="mini srcl">${uniq.map((s) => srcLink(s[0], s[1])).j
       DS.beat(); DS.pop(b); placeBar();
     }
   }, true);
-  window.eventsCalendar = { buildICS, fileName, TODAY, next: () => NEXT.map((e) => e.id), selected: () => [...SEL] };   // for the checks in tools/
+  window.eventsCalendar = { buildICS, fileName, TODAY, next: () => NEXT.map((e) => e.id), selected: () => [...SEL], mode: () => MODE, month: () => CUR };   // for the checks in tools/
   $('icsAll').addEventListener('click', () => {
     const sel = SEL.size > 0;
     const evs = sel ? [...SEL].map((id) => EVS[id]).filter(dated) : D.events.filter((e) => dated(e) && evOk(e));
@@ -2168,6 +2356,12 @@ ${row('Sources', `<ul class="mini srcl">${uniq.map((s) => srcLink(s[0], s[1])).j
     }
     const SECS = ['soon', 'timeline', 'bymonth'];   // a block of the Calendar view, by its address
     const v = ['organizations', 'firms'].includes(h) ? h : 'calendar';
+    const mm = /^month(?:-(\d{4}-\d{2}))?$/.exec(h), prevMode = MODE;
+    if (v === 'calendar') {
+      if (mm) { MODE = 'month'; if (mm[1]) CUR = clampYM(mm[1]); saveMode(); }
+      else if (h === 'list' || SECS.includes(h)) { MODE = 'list'; saveMode(); }
+    }
+    const stay = prev === 'calendar' && v === 'calendar' && (mm || h === 'list');   // a switch of List and Month, or of the month
     const fromDetail = prev === 'detail';
     VIEW = v; document.title = 'Events Calendar · Texas and national';
     ['top', 'limits'].forEach((id) => { $(id).hidden = false; });
@@ -2179,6 +2373,7 @@ ${row('Sources', `<ul class="mini srcl">${uniq.map((s) => srcLink(s[0], s[1])).j
       const back = LAST.open && document.querySelector(`[data-id="${LAST.open}"],[data-org="${LAST.open}"],#s-${CSS.escape(LAST.open || 'x')}`);
       if (back) DS.landed(back);
     } else if (SECS.includes(h)) { const el = $(h); if (el) scrollTo(0, el.getBoundingClientRect().top + scrollY - 70); }
+    else if (stay) { const cb = $('calbar'); if (cb && cb.getBoundingClientRect().top < 60) scrollTo(0, cb.getBoundingClientRect().top + scrollY - 76); if (prevMode !== MODE) { DS.beat(); DS.sweep(); } }
     else if (!first) { scrollTo(0, v === 'calendar' ? 0 : Math.max(0, $('filters').offsetTop - 70)); DS.arrive($('v-' + v)); DS.beat(); DS.sweep(); }
     DS.reveal($('v-' + v));
   }
