@@ -675,6 +675,7 @@ html.thx-cut *,html.thx-cut *::before,html.thx-cut *::after{transition:none!impo
 <style>
 /* Events Calendar: what is its own. Tokens, type roles and components come from Bedrock (the Rolodex's system). */
 .view[hidden]{display:none}
+.sec{scroll-margin-top:72px}
 .navin .cbtn{white-space:nowrap}
 @media(max-width:460px){.navin .cbtn .t{display:none}.navin .cbtn{padding:0 12px}}
 .end p{max-width:none}
@@ -1955,6 +1956,7 @@ ${row('Sources', `<ul class="mini srcl">${uniq.map((s) => srcLink(s[0], s[1])).j
       scrollTo(0, 0); DS.arrive($('v-detail')); DS.beat(); DS.sweep(); DS.scrollLine.ticks();
       return;
     }
+    const SECS = ['soon', 'timeline', 'bymonth'];   // a block of the Calendar view, by its address
     const v = ['organizations', 'firms'].includes(h) ? h : 'calendar';
     const fromDetail = prev === 'detail';
     VIEW = v; document.title = 'Events Calendar · Texas and national';
@@ -1966,7 +1968,8 @@ ${row('Sources', `<ul class="mini srcl">${uniq.map((s) => srcLink(s[0], s[1])).j
       scrollTo(0, LAST.y[v] || 0);
       const back = LAST.open && document.querySelector(`[data-id="${LAST.open}"],[data-org="${LAST.open}"],#s-${CSS.escape(LAST.open || 'x')}`);
       if (back) DS.landed(back);
-    } else if (!first) { scrollTo(0, v === 'calendar' ? 0 : Math.max(0, $('filters').offsetTop - 70)); DS.arrive($('v-' + v)); DS.beat(); DS.sweep(); }
+    } else if (SECS.includes(h)) { const el = $(h); if (el) scrollTo(0, el.getBoundingClientRect().top + scrollY - 70); }
+    else if (!first) { scrollTo(0, v === 'calendar' ? 0 : Math.max(0, $('filters').offsetTop - 70)); DS.arrive($('v-' + v)); DS.beat(); DS.sweep(); }
     DS.reveal($('v-' + v));
   }
   function go(h) { if (location.hash === h) route(); else location.hash = h; }
